@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate QR Code for Digital Menu</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-box {
+            max-width: 600px;
+            background: white;
+            border: 1px solid #dee2e6;
+            padding: 30px;
+            border-radius: 10px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        .navbar {
+            background-color: #0d6efd !important;
+        }
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">QR Code Generator</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="form-box">
+            <h4 class="mb-4 text-center">Generate a QR Code</h4>
+            <form action="{% url 'generate_qr_code' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary w-100">Generate QR Code</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
